@@ -23,3 +23,8 @@ reason = "minimatch's fix is 11.0.1, a major that eslint and typescript-estree d
 id = "GHSA-3g3m-2fjr-6pw4"
 ignoreUntil = 2027-01-31
 reason = "glob's fix is 14.0.2, a major that rimraf doesn't accept. It only reaches @capacitor/cli at build time, which passes rimraf no AbortSignal, and never ships."
+
+[[IgnoredVulns]]
+id = "GHSA-fc5q-39xc-vjpf"
+ignoreUntil = 2027-05-17
+reason = "picomatch has no patched release (every version up to 4.0.7 is affected and 4.0.7 is the latest). It reaches only build, lint and test tooling matching the repository's own globs; no shipped code imports it, and the vite-plugin-node-polyfills path runs it in Node at build time."

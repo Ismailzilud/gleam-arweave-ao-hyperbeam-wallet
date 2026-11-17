@@ -326,6 +326,13 @@ count as a finding.
     `rimraf` doesn't accept. It reaches only `@capacitor/cli` at build
     time, which passes `rimraf` no `AbortSignal`, and isn't in the build.
     Its ignore runs until 2027-01-31.
+  - `picomatch` (GHSA-fc5q-39xc-vjpf): ReDoS through single-branch
+    repeated extglobs, with no patched release (4.0.7 is the latest). It
+    reaches only build, lint and test tooling (`wxt`, `vite`, `eslint`,
+    `vitest`, `dependency-cruiser`), which match the repository's own
+    globs, and no shipped code imports it; the
+    `vite-plugin-node-polyfills` path runs it in Node at build time. Its
+    ignore runs until 2027-05-17.
 
   *Still a finding if,* by any path, `.output/chrome-mv3` contains code
   from any of these packages, or shipped code signs or verifies with ECDSA or
